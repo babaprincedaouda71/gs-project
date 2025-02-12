@@ -7,9 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class TrainingService {
-  // private host : string = "http://57.128.221.44:8888/TRAINING-SERVICE"
-  // private host : string = "http://51.254.114.223:8888/TRAINING-SERVICE"
-  private host : string = "http://127.17.0.1:8888/TRAINING-SERVICE"
+  private host : string = "http://192.168.1.12:8888/TRAINING-SERVICE"
 
   constructor(private http : HttpClient) { }
 

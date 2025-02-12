@@ -10,12 +10,7 @@ export class ClientService {
   /*******************************************************************************/
   clients!: Array<ClientModel>
   /**/
-  // private host: string = "http://gs-gateway-service:8888/CLIENT-SERVICE"
-
-  // private host: string = "http://127.0.0.1:8888/CLIENT-SERVICE"
-  // private host: string = "http://localhost:8888/CLIENT-SERVICE"
-  // private host: string = "http://host.docker.internal:8888/CLIENT-SERVICE"
-  private host: string = "http://127.17.0.1:8888/CLIENT-SERVICE"
+  private host: string = "http://192.168.1.12:8888/CLIENT-SERVICE"
 
   constructor(private http: HttpClient) {
   }

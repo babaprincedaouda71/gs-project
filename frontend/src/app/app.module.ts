@@ -51,12 +51,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
-        // url: 'http://localhost:8085',
-        // url: 'http://localhost:8080',
-        // url: 'http://127.0.0.1:8080',
-        // url: 'http://keycloak:8080',
-        // url: 'http://192.168.1.12:8080',
-        url: 'http://127.17.0.1:8080',
+        url: 'http://192.168.1.12:8080',
         realm: 'gs-pfe-2024',
         // realm: 'master',
         clientId: 'frontend'

@@ -24,6 +24,7 @@ import {GroupService} from "../../../_services/group.service";
   styleUrl: './training.component.scss'
 })
 export class TrainingComponent implements OnInit, OnDestroy {
+  isLoading = false;
   trainings!: TrainingModel[];
   clients!: ClientModel[];
   vendors!: Vendor[]
@@ -85,6 +86,7 @@ export class TrainingComponent implements OnInit, OnDestroy {
   * Get All Trainings
   * */
   getTrainings() {
+    this.isLoading = true
     const trainingSubscription = this.trainingService.getTrainings().subscribe({
       next: (data) => {
         this.trainings = data.map(training => ({
@@ -102,8 +104,10 @@ export class TrainingComponent implements OnInit, OnDestroy {
         // Filter operations
         this.filteredTrainings = [...this.trainings];
         this.uniqueClients = this.getAllUniqueClients();
+        this.isLoading = false;
       },
       error: (err) => {
+        this.isLoading = false;
         console.error('Error fetching trainings:', err.message);
       }
     });
