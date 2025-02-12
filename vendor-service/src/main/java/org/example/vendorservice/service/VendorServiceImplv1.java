@@ -60,7 +60,9 @@ public class VendorServiceImplv1 implements VendorService {
     List<VendorDTO> vendorDTOS = new ArrayList<>();
     List<Vendor> all = vendorRepo.findAll();
     if (all.isEmpty()) {
-      throw new VendorNotFoundException("Aucun Fournisseur trouvé dans la Base de Données");
+//      throw new VendorNotFoundException("Aucun Fournisseur trouvé dans la Base de Données");
+      all.forEach(o -> vendorDTOS.add(vendorMapper.fromVendor(o)));
+      return vendorDTOS;
     }
     all.forEach(
         vendor -> {

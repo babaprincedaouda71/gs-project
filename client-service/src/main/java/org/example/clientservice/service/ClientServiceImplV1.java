@@ -1,6 +1,9 @@
 package org.example.clientservice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 import org.example.clientservice.dto.AddClientDTO;
 import org.example.clientservice.dto.ClientDTO;
 import org.example.clientservice.entity.Client;
@@ -8,14 +11,11 @@ import org.example.clientservice.exceptions.ApiRequestException;
 import org.example.clientservice.exceptions.ClientNotFoundException;
 import org.example.clientservice.mapper.ClientMapper;
 import org.example.clientservice.repo.ClientRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -27,6 +27,7 @@ public class ClientServiceImplV1 implements ClientService {
         this.clientRepository = clientRepository;
         this.clientMapper = clientMapper;
     }
+
 
     @Override
   public ClientDTO addClient(String clientDTO, MultipartFile logo) {
@@ -48,13 +49,11 @@ public class ClientServiceImplV1 implements ClientService {
   @Override
   public List<Client> getClients() {
     List<Client> clients = clientRepository.findAll();
-    if (clients.isEmpty()) {
-      throw new ClientNotFoundException("Aucun Client trouvé dans la Base de Données");
-    }
-    return clients;
+      return clients;
   }
 
   @Override
+  @Cacheable(value = "clients", key = "idClient")
   public AddClientDTO getById(Long idClient) {
     Client client =
         clientRepository

@@ -86,16 +86,39 @@ services:
       - '8888'
     environment:
       - DISCOVERY_SERVICE_URL=http://gs-discovery-service:8761/eureka
-#      - CONFIG_SERVICE_URL=http://gs-config-service:9999
+    #      - CONFIG_SERVICE_URL=http://gs-config-service:9999
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8888/actuator/health" ]
       interval: 10s
       retries: 4
-    #    depends_on:
-    #      gs-config-service:
-    #        condition: service_healthy
+    depends_on:
+      gs-discovery-service:
+        condition: service_healthy
     networks:
       - app_network
+
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - redis:/data
+    networks:
+      - app_network
+
+  redis_insight:
+    image: redislabs/redisinsight:latest
+    container_name: redis_insight
+    restart: always
+    ports:
+      - 8001:8001
+    volumes:
+      - redis_insight:/db
+
 
 
   gs-client-service:
@@ -268,6 +291,10 @@ volumes:
   postgres_data:
     driver: local
   app_data:
+    driver: local
+  redis:
+    driver: local
+  redis_insight:
     driver: local
 
 networks:
