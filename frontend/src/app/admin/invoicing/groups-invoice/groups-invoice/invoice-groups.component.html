@@ -1,0 +1,94 @@
+<mat-card class="cardWithShadow">
+  <mat-card-header>
+    <mat-card-title>Veuillez Sélectionner les groupes de formation à facturer</mat-card-title>
+    <mat-card-subtitle class="mat-body-1">Un seul ou plusieurs éléments</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-responsive m-t-30">
+      <table *ngIf="datasource" [dataSource]="datasource" class="w-100" mat-table>
+        <!-- Position Column -->
+        <ng-container matColumnDef="client">
+          <th *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-header-cell>
+            Client
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            <div class="d-flex align-items-center">
+              <div class="m-l-16">
+                <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                  {{ element.client }}
+                </h6>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Theme Column -->
+        <ng-container matColumnDef="theme">
+          <th *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-header-cell>
+            Thème
+          </th>
+          <td *matCellDef="let element" class="mat-body-1" mat-cell>
+            {{ element.theme }}
+          </td>
+        </ng-container>
+
+        <!-- Colonne des groupes -->
+        <ng-container matColumnDef="group">
+          <th *matHeaderCellDef class="p-l-0" mat-header-cell>
+            Groupes
+          </th>
+          <td *matCellDef="let element; let i = index" class="p-l-0" mat-cell>
+            Groupe {{ i + 1 }}
+          </td>
+        </ng-container>
+
+        <!-- Colonne des bénéficiaires -->
+        <ng-container matColumnDef="staff">
+          <th *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-header-cell>
+            Bénéficiaires
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.groupStaff }}
+          </td>
+        </ng-container>
+
+
+        <!-- Amount Column -->
+        <ng-container matColumnDef="amount">
+          <th *matHeaderCellDef class="p-l-0" mat-header-cell>
+            Montant HT
+          </th>
+          <td *matCellDef="let element" class="p-l-0" mat-cell>
+            {{ element.groupAmount }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="select">
+          <th *matHeaderCellDef class="p-l-0" mat-header-cell></th>
+          <td (click)="$event.stopPropagation()" *matCellDef="let row" class="p-l-0" mat-cell>
+            <mat-checkbox
+              (change)="onGroupCheckboxChange($event, row)"
+              [aria-label]="checkboxLabel(row)"
+              [checked]="selection.isSelected(row)"
+              color="primary">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr (click)="onRowClick($event, row)"
+            *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+      </table>
+    </div>
+    <div class="m-t-12 text-right">
+      <!--      <button (click)="onGenerateInvoice()" [disabled]="selection.selected.length <= 0" color="primary" mat-flat-button>-->
+      <!--        Suivant-->
+      <!--      </button>-->
+      <button (click)="onGoToValidate()" [disabled]="selection.selected.length <= 0" color="primary" mat-flat-button
+              type="button">
+        Suivant
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

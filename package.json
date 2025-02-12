@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@fullcalendar/angular": "^6.1.16",
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15"
+  }
+}

@@ -1,0 +1,65 @@
+.w-100 {
+  width: 100%;
+}
+
+.mat-form-field {
+  max-width: 120px; /* Réduit la taille maximale des inputs */
+}
+
+.date-range-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+  flex-wrap: wrap;
+}
+
+.date-range-container span {
+  margin: 0 8px;
+}
+
+.date-field {
+  flex: 1;
+  min-width: 100px;
+  max-width: 120px;
+  margin: 0 2px;
+}
+
+@media (max-width: 768px) {
+  .date-range-container {
+    flex-direction: column;
+  }
+  .date-field {
+    width: 100%;
+  }
+}
+
+.group-row {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+
+  &:hover {
+    background-color: #fafafa;
+  }
+
+  .mat-form-field {
+    min-width: 200px;
+  }
+}
+
+.gap-4 {
+  gap: 1.5rem !important;
+}
+
+.dates-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 1.5rem;
+  margin: 0 0.5rem;
+}
+
+// Ajout d'une largeur minimale pour les champs de formulaire
+mat-form-field.mat-form-field {
+  margin-bottom: 0.5rem;
+}

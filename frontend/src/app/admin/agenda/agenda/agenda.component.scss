@@ -1,0 +1,67 @@
+//.event-text {
+//  font-size: 14px; /* Change la taille de la police */
+//  background-color: rgba(22, 156, 245, 0.87); /* Change la couleur de fond */
+//  padding: 5px; /* Ajoute du rembourrage pour un meilleur aspect */
+//  margin-bottom: 5px; /* Ajoute des marges autour de l'événement */
+//  //margin-left: 10px; /* Ajoute des marges autour de l'événement */
+//  white-space: nowrap; /* Empêche le retour à la ligne */
+//  overflow: hidden; /* Cache le texte qui dépasse */
+//  text-overflow: ellipsis;
+//  color: white;
+//  width: 100%;
+//  text-align: center;
+//  border-radius: 8px; /* Ajoute des bordures arrondies */
+//}
+//
+//.event-text:hover {
+//  background-color: rgba(14, 119, 198, 0.87); /* Change la couleur de fond au survol */
+//}
+//
+//.event-container {
+//  display: flex; /* Utilise la disposition flexbox pour aligner les éléments */
+//  align-items: center; /* Aligne les éléments sur l'axe vertical */
+//}
+
+.events-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .event-item {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.event-consecutive {
+      position: relative;
+      margin: 1px 0;
+      z-index: 1;
+
+      // Pour gérer la superposition
+      &:not(:first-child) {
+        margin-top: -1px;
+      }
+    }
+
+    &.event-single {
+      margin: 1px 0;
+    }
+  }
+}
+
+// Style pour les événements consécutifs
+:host ::ng-deep {
+  .cal-event-container {
+    width: calc(100% + 1px) !important;
+  }
+
+  // Assurer que les événements superposés s'affichent correctement
+  .cal-days .cal-cell-row {
+    overflow: visible !important;
+  }
+}
