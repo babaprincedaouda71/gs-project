@@ -10,7 +10,7 @@ spring:
               - "http://keycloak"
 #              - "http://192.168.1.12"
               - "http://127.17.0.1"
-              - - "http://gs.com"
+              - "http://gs.com"
             allowedHeaders:
               - Authorization
               - Content-Type
