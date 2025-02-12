@@ -287,7 +287,7 @@ export class TrainingComponent implements OnInit, OnDestroy {
       .subscribe({
         next: data => {
           this.getTrainings()
-          this.snackBar.open('La Formation ' + data.theme + ' a été supprimée avec Succès', 'Fermer', {
+          this.snackBar.open('La Formation ' + row_obj.theme + ' a été supprimée avec Succès', 'Fermer', {
             duration: 4000,
             panelClass: ['green-snackbar'],
             horizontalPosition: 'center',

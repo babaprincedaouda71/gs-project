@@ -78,7 +78,7 @@ export class TrainingService {
   }
 
   public deleteTraining(idTraining : number) {
-    return this.http.delete<TrainingModel>(`${this.host}/training/delete/${idTraining}`)
+    return this.http.delete(`${this.host}/training/delete/${idTraining}`)
   }
 
   public sendMail(emailData : any){

@@ -5,11 +5,7 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
-              - "http://localhost"
-              - "http://127.0.0.1"
-              - "http://keycloak"
-#              - "http://192.168.1.12"
-              - "http://127.17.0.1"
+              - "http://192.168.1.12"
               - "http://gs.com"
             allowedHeaders:
               - Authorization

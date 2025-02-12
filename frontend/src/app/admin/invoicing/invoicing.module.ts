@@ -23,7 +23,7 @@ import {
   MatColumnDef,
   MatHeaderCell, MatHeaderCellDef,
   MatHeaderRow,
-  MatHeaderRowDef,
+  MatHeaderRowDef, MatNoDataRow,
   MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
 import {MatError, MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
@@ -53,6 +53,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
 import { DetailGroupsInvoiceComponent } from './groups-invoice/detail-groups-invoice/detail-groups-invoice.component';
 import { UpdateGroupsInvoiceComponent } from './groups-invoice/update-groups-invoice/update-groups-invoice.component';
 import { EditGroupInvoiceComponent } from './groups-invoice/edit-group-invoice/edit-group-invoice.component';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -117,7 +118,9 @@ import { EditGroupInvoiceComponent } from './groups-invoice/edit-group-invoice/e
     MatTooltip,
     ReactiveFormsModule,
     MatRadioGroup,
-    MatRadioButton
+    MatRadioButton,
+    MatProgressSpinner,
+    MatNoDataRow
   ]
 })
 export class InvoicingModule { }

@@ -44,7 +44,7 @@ public class TrainingController {
 
   @DeleteMapping("/delete/{idTraining}")
   @PreAuthorize("hasAuthority('admin')")
-  public TrainingDTO deleteTraining(@PathVariable Long idTraining) {
+  public ResponseEntity deleteTraining(@PathVariable Long idTraining) {
     return trainingService.deleteTraining(idTraining);
   }
 

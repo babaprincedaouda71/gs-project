@@ -3,3 +3,10 @@ a {
   color: inherit; /* Utiliser la couleur par défaut du texte */
   /* Ajoutez d'autres styles si nécessaire */
 }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Ajustez la hauteur selon vos besoins */
+}

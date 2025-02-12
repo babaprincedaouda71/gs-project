@@ -24,6 +24,7 @@ import {Subscription} from "rxjs";
   styleUrl: './client.component.scss'
 })
 export class ClientComponent implements OnInit, AfterViewInit, OnDestroy {
+  isLoading = false
   clients: Array<ClientModel> = [];
   client!: ClientModel;
   datasource!: MatTableDataSource<any>;
@@ -60,6 +61,7 @@ export class ClientComponent implements OnInit, AfterViewInit, OnDestroy {
   * Get All Clients
   * */
   getClients() {
+    this.isLoading = true;
     const clientsSubscription = this.clientService.getClients()
       .subscribe({
         next: clients => {
@@ -69,6 +71,7 @@ export class ClientComponent implements OnInit, AfterViewInit, OnDestroy {
           })
           this.datasource = new MatTableDataSource(this.clients);
           this.datasource.paginator = this.paginator;
+          this.isLoading = false;
         },
       })
 

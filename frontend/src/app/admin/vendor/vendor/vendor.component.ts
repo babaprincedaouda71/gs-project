@@ -15,6 +15,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./vendor.component.scss']
 })
 export class VendorComponent implements OnInit, OnDestroy {
+  isLoading = false
   vendors!: Vendor[];
   displayedColumns: string[] = ['name', 'phone', 'email', 'address', 'action'];
   datasource!: MatTableDataSource<any>;
@@ -41,15 +42,18 @@ export class VendorComponent implements OnInit, OnDestroy {
    * Fetch all vendors
    */
   getVendors() {
+    this.isLoading = true;
     const vendorsSubscription = this.vendorService.getVendors()
       .subscribe({
         next: data => {
           this.vendors = data;
           this.datasource = new MatTableDataSource(this.vendors);
           this.datasource.paginator = this.paginator;
+          this.isLoading = false;
         },
         error: err => {
           console.error(err.message);
+          this.isLoading = false;
         }
       });
     this.subscriptions.push(vendorsSubscription);

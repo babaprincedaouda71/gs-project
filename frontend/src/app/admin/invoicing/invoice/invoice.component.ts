@@ -17,6 +17,7 @@ import {GroupService} from "../../../_services/group.service";
   styleUrl: './invoice.component.scss'
 })
 export class InvoiceComponent implements OnInit, OnDestroy {
+  isLoading = true
   // Liste des factures
   invoices: Array<InvoiceModel> = [];
   // Source de données pour la table des factures
@@ -60,11 +61,13 @@ export class InvoiceComponent implements OnInit, OnDestroy {
 
   // Récupère la liste des factures depuis le service
   getInvoices() {
+    this.isLoading = true;
     const invoicesSubscription = this.invoiceService.getInvoices().subscribe({
       next: data => {
         this.invoices = data;
         this.datasource = new MatTableDataSource(this.invoices);
         this.datasource.paginator = this.paginator; // Initialise la pagination
+        this.isLoading = false;
       },
       error: err => {
         // Affiche un message d'erreur en cas de problème
@@ -74,6 +77,7 @@ export class InvoiceComponent implements OnInit, OnDestroy {
           verticalPosition: 'top',
         });
         console.log(err.message);
+        this.isLoading = false;
       }
     });
     this.subscriptions.push(invoicesSubscription);

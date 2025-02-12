@@ -17,6 +17,7 @@ import org.example.trainingservice.model.Client;
 import org.example.trainingservice.model.Vendor;
 import org.example.trainingservice.repo.TrainingGroupRepository;
 import org.example.trainingservice.repo.TrainingRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -196,8 +197,9 @@ public class TrainingServiceImpl01 implements TrainingService {
   /******************************** End Update Training **********************************************/
 
   @Override
-  public TrainingDTO deleteTraining(Long idTraining) {
-    return null;
+  public ResponseEntity deleteTraining(Long idTraining) {
+    trainingRepository.deleteById(idTraining);
+    return ResponseEntity.ok().build();
   }
 
   @Override

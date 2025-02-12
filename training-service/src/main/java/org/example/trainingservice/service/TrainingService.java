@@ -1,6 +1,7 @@
 package org.example.trainingservice.service;
 
 import org.example.trainingservice.dto.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface TrainingService {
 
     AddTrainingResponse updateTraining(AddTrainingRequest addTrainingRequest, Long idTraining);
 
-    TrainingDTO deleteTraining(Long idTraining);
+    ResponseEntity deleteTraining(Long idTraining);
 
     AddTrainingRequest addPv(String pv, Long idTraining);
 

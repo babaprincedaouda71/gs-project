@@ -31,10 +31,6 @@
   </mat-card-content>
 </mat-card>
 
-<div *ngIf="isLoading" class="spinner-container">
-  <mat-spinner></mat-spinner>
-</div>
-
 <mat-card *ngIf="!isLoading && datasource" class="cardWithShadow">
   <mat-card-content class="p-24">
     <div class="row">
@@ -154,11 +150,14 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card *ngIf="datasource" class="cardWithShadow">
+<div *ngIf="isLoading" class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<mat-card *ngIf="!isLoading && datasource" class="cardWithShadow">
   <mat-card-content class="p-24">
     <div class="table-responsive">
       <table [dataSource]="datasource" class="w-100" mat-table>
-
         <ng-container matColumnDef="client">
           <th *matHeaderCellDef class="f-s-16 f-w-600" mat-header-cell>Client</th>
           <td *matCellDef="let element" mat-cell style="word-wrap: break-word;">
@@ -285,41 +284,6 @@
         </ng-container>
 
 
-        <!--        <ng-container matColumnDef="confirmed">-->
-        <!--          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">-->
-        <!--            Confirmation-->
-        <!--          </th>-->
-        <!--          <td mat-cell *matCellDef="let element" class="f-s-14">-->
-        <!--            &lt;!&ndash;            {{ element.confirmed }}&ndash;&gt;-->
-        <!--            <a-->
-        <!--              (click)="openDialog('Confirmer', element)"-->
-        <!--              class="m-r-10 cursor-pointer"-->
-        <!--            >-->
-        <!--              <i-tabler-->
-        <!--                [name]="element.confirmed ==='OUI'? 'circle-check' : 'circle-minus'"-->
-        <!--                class="icon-18"></i-tabler>-->
-        <!--            </a>-->
-        <!--          </td>-->
-        <!--        </ng-container>-->
-
-        <!--        <ng-container matColumnDef="done">-->
-        <!--          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">-->
-        <!--            Réalisée-->
-        <!--          </th>-->
-        <!--          <td mat-cell *matCellDef="let element" class="f-s-14">-->
-        <!--            &lt;!&ndash;            {{ element.confirmed }}&ndash;&gt;-->
-        <!--            <a-->
-        <!--              (click)="openDialog('Réaliseé', element)"-->
-        <!--              class="m-r-10 cursor-pointer"-->
-        <!--              *ngIf="element.confirmed == 'OUI'"-->
-        <!--            >-->
-        <!--              <i-tabler-->
-        <!--                [name]="element.done ==='OUI'? 'circle-check' : 'circle-minus'"-->
-        <!--                class="icon-18"></i-tabler>-->
-        <!--            </a>-->
-        <!--          </td>-->
-        <!--        </ng-container>-->
-
         <ng-container matColumnDef="action">
           <th *matHeaderCellDef class="f-s-16 f-w-600" mat-header-cell>
             Action
@@ -350,6 +314,17 @@
             <hr class="group-separator-line"/>
           </td>
         </tr>
+
+        <!-- Ligne affichée lorsqu'aucune donnée n'est disponible -->
+        <ng-container *matNoDataRow>
+          <tr class="mat-row">
+            <td [attr.colspan]="displayedColumns.length" class="mat-cell">
+              <div class="no-data-message">
+                <p>Aucune donnée disponible pour le moment.</p>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
 
       </table>
       <mat-paginator [pageSizeOptions]="[20, 50, 100]"

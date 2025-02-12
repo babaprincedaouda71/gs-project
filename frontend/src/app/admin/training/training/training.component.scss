@@ -44,7 +44,9 @@ hr {
   padding: 0;
 }
 
-//.lifecycle {
-//  hov
-//}
-
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Ajustez la hauteur selon vos besoins */
+}
