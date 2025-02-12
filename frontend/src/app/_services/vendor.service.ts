@@ -6,7 +6,7 @@ import {Vendor} from "../../models/vendor.model";
   providedIn: 'root'
 })
 export class VendorService {
-  private host : string = "http://127.17.0.1:8888/VENDOR-SERVICE"
+  private host : string = "http://192.168.1.124:8888/VENDOR-SERVICE"
 
   constructor(private http : HttpClient) { }
 

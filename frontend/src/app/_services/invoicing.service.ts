@@ -21,7 +21,7 @@ setVfs(pdfFonts.pdfMake.vfs)
   providedIn: 'root'
 })
 export class InvoicingService {
-  private host: string = "http://127.17.0.1:8888/INVOICING-SERVICE"
+  private host: string = "http://192.168.1.124:8888/INVOICING-SERVICE"
 
   constructor(private http: HttpClient) {
   }

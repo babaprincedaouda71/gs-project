@@ -109,8 +109,7 @@ services:
       DISCOVERY_SERVICE_URL: http://gs-discovery-service:8761/eureka
       #      CONFIG_SERVICE_URL: http://gs-config-service:9999
       DB_URL: jdbc:mysql://databases:3306/clients_db?createDatabaseIfNotExist=true
-      OAUTH2_ISSUER_URI: http://127.17.0.1:8080/realms/gs-pfe-2024
-      OAUTH2_JWK_SET_URI: http://127.17.0.1:8080/realms/gs-pfe-2024/protocol/openid-connect/certs
+      OAUTH2_ISSUER_URI: http://192.168.1.124:8080/realms/gs-pfe-2024
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8081/actuator/health" ]
       interval: 10s
@@ -135,7 +134,7 @@ services:
       DISCOVERY_SERVICE_URL: http://gs-discovery-service:8761/eureka
       #      CONFIG_SERVICE_URL: http://gs-config-service:9999
       DB_URL: jdbc:mysql://databases:3306/vendors_db?createDatabaseIfNotExist=true
-      OAUTH2_ISSUER_URI: http://127.17.0.1:8080/realms/gs-pfe-2024
+      OAUTH2_ISSUER_URI: http://192.168.1.124:8080/realms/gs-pfe-2024
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8083/actuator/health" ]
       interval: 10s
@@ -158,7 +157,7 @@ services:
       DISCOVERY_SERVICE_URL: http://gs-discovery-service:8761/eureka
       #      CONFIG_SERVICE_URL: http://gs-config-service:9999
       DB_URL: jdbc:mysql://databases:3306/trainings_db?createDatabaseIfNotExist=true
-      OAUTH2_ISSUER_URI: http://127.17.0.1:8080/realms/gs-pfe-2024
+      OAUTH2_ISSUER_URI: http://192.168.1.124:8080/realms/gs-pfe-2024
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8082/actuator/health" ]
       interval: 10s
@@ -181,7 +180,7 @@ services:
       DISCOVERY_SERVICE_URL: http://gs-discovery-service:8761/eureka
       #      CONFIG_SERVICE_URL: http://gs-config-service:9999
       DB_URL: jdbc:mysql://databases:3306/invoicings_db?createDatabaseIfNotExist=true
-      OAUTH2_ISSUER_URI: http://127.17.0.1:8080/realms/gs-pfe-2024
+      OAUTH2_ISSUER_URI: http://192.168.1.124:8080/realms/gs-pfe-2024
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8084/actuator/health" ]
       interval: 10s
@@ -211,13 +210,14 @@ services:
     container_name: keycloak
     command: start-dev
     environment:
-      KC_HOSTNAME: 127.17.0.1
-      KC_HOSTNAME_ADMIN: 127.17.0.1
+      KC_HOSTNAME: 192.168.1.124
+      KC_HOSTNAME_ADMIN: 192.168.1.124
       #      KC_HOSTNAME: keycloak
       KC_HOSTNAME_PORT: 8080
       KC_HOSTNAME_STRICT_BACKCHANNEL: false
       KC_HTTP_ENABLED: true
       KC_HOSTNAME_STRICT_HTTPS: false
+      KC_HOSTNAME_STRICT: false
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
