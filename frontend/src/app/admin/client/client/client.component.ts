@@ -141,7 +141,7 @@ export class ClientComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe({
         next: data => {
           this.getClients()
-          this.snackBar.open('Le Client ' + data.corporateName + ' a été supprimé avec Succès', 'Fermer', {
+          this.snackBar.open('Le Client ' + row_obj.corporateName + ' a été supprimé avec Succès', 'Fermer', {
             duration: 4000,
             panelClass: ['green-snackbar'],
             horizontalPosition: 'center',

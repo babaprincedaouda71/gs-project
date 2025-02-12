@@ -6,6 +6,7 @@ import org.example.clientservice.dto.ClientDTO;
 import org.example.clientservice.entity.Client;
 import org.example.clientservice.service.ClientService;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,7 +56,7 @@ public class ClientController {
 
   @DeleteMapping("/delete/{idClient}")
   @PreAuthorize("hasAuthority('admin')")
-  public ClientDTO deleteClient(@PathVariable Long idClient) {
+  public ResponseEntity deleteClient(@PathVariable Long idClient) {
     return clientService.deleteClient(idClient);
   }
 

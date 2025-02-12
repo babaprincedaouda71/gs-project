@@ -3,6 +3,7 @@ package org.example.clientservice.service;
 import org.example.clientservice.dto.AddClientDTO;
 import org.example.clientservice.dto.ClientDTO;
 import org.example.clientservice.entity.Client;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface ClientService {
 
   ClientDTO updateClient(AddClientDTO clientDTO);
 
-  ClientDTO deleteClient(Long idClient);
+  ResponseEntity deleteClient(Long idClient);
 
     int getDeadline(Long idClient);
 

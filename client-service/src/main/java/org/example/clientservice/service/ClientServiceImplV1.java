@@ -8,6 +8,7 @@ import org.example.clientservice.exceptions.ApiRequestException;
 import org.example.clientservice.exceptions.ClientNotFoundException;
 import org.example.clientservice.mapper.ClientMapper;
 import org.example.clientservice.repo.ClientRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -78,7 +79,7 @@ public class ClientServiceImplV1 implements ClientService {
   }
 
   @Override
-  public ClientDTO deleteClient(Long idClient) {
+  public ResponseEntity deleteClient(Long idClient) {
     Client byID =
         clientRepository
             .findById(idClient)
@@ -87,7 +88,7 @@ public class ClientServiceImplV1 implements ClientService {
                     new ClientNotFoundException(
                         "Le Client que vous essayé de supprimer n'existe pas"));
     clientRepository.delete(byID);
-    return clientMapper.fromClient(byID);
+    return ResponseEntity.ok().build();
   }
 
   @Override

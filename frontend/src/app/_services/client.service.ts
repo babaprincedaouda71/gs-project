@@ -35,7 +35,7 @@ export class ClientService {
 
   // Delete a client with its 'id'
   public deleteClient(idClient: number) {
-    return this.http.delete<ClientModel>(`${this.host}/client/delete/${idClient}`)
+    return this.http.delete(`${this.host}/client/delete/${idClient}`)
   }
 
   // Update a client
