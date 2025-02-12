@@ -109,7 +109,7 @@ services:
       DISCOVERY_SERVICE_URL: http://gs-discovery-service:8761/eureka
       #      CONFIG_SERVICE_URL: http://gs-config-service:9999
       DB_URL: jdbc:mysql://databases:3306/clients_db?createDatabaseIfNotExist=true
-      OAUTH2_ISSUER_URI: http://192.168.1.1248080/realms/gs-pfe-2024
+      OAUTH2_ISSUER_URI: http://192.168.1.124:8080/realms/gs-pfe-2024
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8081/actuator/health" ]
       interval: 10s
